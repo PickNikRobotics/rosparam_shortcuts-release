@@ -1,0 +1,21 @@
+## rosparam_shortcuts (jade) - 0.0.2-0
+
+The packages in the `rosparam_shortcuts` repository were released into the `jade` distro by running `/usr/bin/bloom-release --rosdistro jade --track jade rosparam_shortcuts --edit` on `Thu, 03 Dec 2015 19:54:06 -0000`
+
+The `rosparam_shortcuts` package was released.
+
+Version of package(s) in repository `rosparam_shortcuts`:
+- upstream repository: https://github.com/davetcoleman/rosparam_shortcuts.git
+- release repository: unknown
+- rosdistro version: `null`
+- old version: `null`
+- new version: `0.0.2-0`
+
+Versions of tools used:
+- bloom version: `0.5.20`
+- catkin_pkg version: `0.2.10`
+- rosdep version: `0.11.4`
+- rosdistro version: `0.4.2`
+- vcstools version: `0.1.38`
+
+
