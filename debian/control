@@ -1,0 +1,12 @@
+Source: ros-jade-rosparam-shortcuts
+Section: misc
+Priority: extra
+Maintainer: Dave Coleman <davetcoleman@gmail.com>
+Build-Depends: debhelper (>= 9.0.0), ros-jade-catkin, ros-jade-cmake-modules, ros-jade-roscpp
+Homepage: https://github.com/davetcoleman/rosparam_shortcuts
+Standards-Version: 3.9.2
+
+Package: ros-jade-rosparam-shortcuts
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}, ros-jade-roscpp
+Description: Quickly load variables from rosparam with good command line error checking.
