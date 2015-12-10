@@ -2,6 +2,11 @@
 Changelog for package rosparam_shortcuts
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+0.0.6 (2015-12-10)
+------------------
+* Added example code
+* Contributors: Dave Coleman
+
 0.0.5 (2015-12-09)
 ------------------
 * Attempting to fix Eigen
