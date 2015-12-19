@@ -1,0 +1,12 @@
+Source: ros-indigo-rosparam-shortcuts
+Section: misc
+Priority: extra
+Maintainer: Dave Coleman <davetcoleman@gmail.com>
+Build-Depends: debhelper (>= 9.0.0), libeigen3-dev, ros-indigo-catkin, ros-indigo-cmake-modules, ros-indigo-eigen-conversions, ros-indigo-roscpp, ros-indigo-roslint
+Homepage: https://github.com/davetcoleman/rosparam_shortcuts
+Standards-Version: 3.9.2
+
+Package: ros-indigo-rosparam-shortcuts
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}, libeigen3-dev, ros-indigo-roscpp
+Description: Quickly load variables from rosparam with good command line error checking.
