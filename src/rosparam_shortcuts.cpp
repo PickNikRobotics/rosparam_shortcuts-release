@@ -36,11 +36,17 @@
    Desc:   Helpers for loading parameters from the parameter server
 */
 
+// C++
+#include <string>
+#include <vector>
+#include <map>
+
+// this package
 #include <rosparam_shortcuts/rosparam_shortcuts.h>
 
 namespace rosparam_shortcuts
 {
-bool getBoolParam(const std::string &parent_name, const ros::NodeHandle &nh, const std::string &param_name, bool &value)
+bool get(const std::string &parent_name, const ros::NodeHandle &nh, const std::string &param_name, bool &value)
 {
   // Load a param
   if (!nh.hasParam(param_name))
@@ -55,8 +61,8 @@ bool getBoolParam(const std::string &parent_name, const ros::NodeHandle &nh, con
   return true;
 }
 
-bool getBoolMap(const std::string &parent_name, const ros::NodeHandle &nh, const std::string &params_namespace,
-                std::map<std::string, bool> &parameters)
+bool get(const std::string &parent_name, const ros::NodeHandle &nh, const std::string &params_namespace,
+         std::map<std::string, bool> &parameters)
 {
   // Load a param
   if (!nh.hasParam(params_namespace))
@@ -68,7 +74,8 @@ bool getBoolMap(const std::string &parent_name, const ros::NodeHandle &nh, const
   nh.getParam(params_namespace, parameters);
 
   // Debug
-  for (std::map<std::string, bool>::const_iterator param_it = parameters.begin(); param_it != parameters.end(); param_it++)
+  for (std::map<std::string, bool>::const_iterator param_it = parameters.begin(); param_it != parameters.end();
+       param_it++)
   {
     ROS_DEBUG_STREAM_NAMED(parent_name, "Loaded parameter '" << nh.getNamespace() << "/" << params_namespace << "/"
                                                              << param_it->first << "' with value " << param_it->second);
@@ -77,8 +84,7 @@ bool getBoolMap(const std::string &parent_name, const ros::NodeHandle &nh, const
   return true;
 }
 
-bool getDoubleParam(const std::string &parent_name, const ros::NodeHandle &nh, const std::string &param_name,
-                    double &value)
+bool get(const std::string &parent_name, const ros::NodeHandle &nh, const std::string &param_name, double &value)
 {
   // Load a param
   if (!nh.hasParam(param_name))
@@ -93,8 +99,8 @@ bool getDoubleParam(const std::string &parent_name, const ros::NodeHandle &nh, c
   return true;
 }
 
-bool getDoubleParams(const std::string &parent_name, const ros::NodeHandle &nh, const std::string &param_name,
-                     std::vector<double> &values)
+bool get(const std::string &parent_name, const ros::NodeHandle &nh, const std::string &param_name,
+         std::vector<double> &values)
 {
   // Load a param
   if (!nh.hasParam(param_name))
@@ -114,7 +120,7 @@ bool getDoubleParams(const std::string &parent_name, const ros::NodeHandle &nh, 
   return true;
 }
 
-bool getIntParam(const std::string &parent_name, const ros::NodeHandle &nh, const std::string &param_name, int &value)
+bool get(const std::string &parent_name, const ros::NodeHandle &nh, const std::string &param_name, int &value)
 {
   // Load a param
   if (!nh.hasParam(param_name))
@@ -129,8 +135,7 @@ bool getIntParam(const std::string &parent_name, const ros::NodeHandle &nh, cons
   return true;
 }
 
-bool getIntParam(const std::string &parent_name, const ros::NodeHandle &nh, const std::string &param_name,
-                 unsigned int &value)
+bool get(const std::string &parent_name, const ros::NodeHandle &nh, const std::string &param_name, std::size_t &value)
 {
   // Load a param
   if (!nh.hasParam(param_name))
@@ -147,26 +152,7 @@ bool getIntParam(const std::string &parent_name, const ros::NodeHandle &nh, cons
   return true;
 }
 
-bool getSizeTParam(const std::string &parent_name, const ros::NodeHandle &nh, const std::string &param_name,
-                   std::size_t &value)
-{
-  // Load a param
-  if (!nh.hasParam(param_name))
-  {
-    ROS_ERROR_STREAM_NAMED(parent_name, "Missing parameter '" << nh.getNamespace() << "/" << param_name << "'.");
-    return false;
-  }
-  int nonsigned_value;
-  nh.getParam(param_name, nonsigned_value);
-  value = nonsigned_value;
-  ROS_DEBUG_STREAM_NAMED(parent_name, "Loaded parameter '" << nh.getNamespace() << "/" << param_name << "' with value "
-                                                           << value);
-
-  return true;
-}
-
-bool getStringParam(const std::string &parent_name, const ros::NodeHandle &nh, const std::string &param_name,
-                    std::string &value)
+bool get(const std::string &parent_name, const ros::NodeHandle &nh, const std::string &param_name, std::string &value)
 {
   // Load a param
   if (!nh.hasParam(param_name))
@@ -181,8 +167,8 @@ bool getStringParam(const std::string &parent_name, const ros::NodeHandle &nh, c
   return true;
 }
 
-bool getStringParams(const std::string &parent_name, const ros::NodeHandle &nh, const std::string &param_name,
-                     std::vector<std::string> &values)
+bool get(const std::string &parent_name, const ros::NodeHandle &nh, const std::string &param_name,
+         std::vector<std::string> &values)
 {
   // Load a param
   if (!nh.hasParam(param_name))
@@ -202,8 +188,7 @@ bool getStringParams(const std::string &parent_name, const ros::NodeHandle &nh, 
   return true;
 }
 
-bool getDurationParam(const std::string &parent_name, const ros::NodeHandle &nh, const std::string &param_name,
-                      ros::Duration &value)
+bool get(const std::string &parent_name, const ros::NodeHandle &nh, const std::string &param_name, ros::Duration &value)
 {
   double temp_value;
   // Load a param
@@ -222,8 +207,8 @@ bool getDurationParam(const std::string &parent_name, const ros::NodeHandle &nh,
   return true;
 }
 
-bool getAffine3dParam(const std::string &parent_name, const ros::NodeHandle &nh, const std::string &param_name,
-                      Eigen::Affine3d &value)
+bool get(const std::string &parent_name, const ros::NodeHandle &nh, const std::string &param_name,
+         Eigen::Affine3d &value)
 {
   std::vector<double> values;
 
@@ -287,7 +272,7 @@ bool convertDoublesToEigen(const std::string &parent_name, std::vector<double> v
   return true;
 }
 
-void shutdownIfParamErrors(const std::string &parent_name, std::size_t error_count)
+void shutdownIfError(const std::string &parent_name, std::size_t error_count)
 {
   if (!error_count)
     return;
@@ -298,4 +283,4 @@ void shutdownIfParamErrors(const std::string &parent_name, std::size_t error_cou
   exit(0);
 }
 
-}  // end namespace
+}  // namespace rosparam_shortcuts
