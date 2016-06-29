@@ -2,7 +2,7 @@
 
 Quickly load variables from rosparam with good command line error checking.
 
-This package enforces the philosphy that there should be no default parameters - everything must be defined by the user in yaml files (or launch files or where ever) otherwise your program should not run. This helps debug why something isn't working correctly - it will tell you exactly what rosparameters are missing.
+This package enforces the philosophy that there should be no default parameters - everything must be defined by the user in yaml files (or launch files or where ever) otherwise your program should not run. This helps debug why something isn't working correctly - it will tell you exactly what rosparameters are missing.
 
 Features:
  - Outputs all loaded data into consule using ROS_DEBUG, so you won't see it unless you turn it on
@@ -18,9 +18,9 @@ Developed by [Dave Coleman](http://dav.ee/) at the University of Colorado Boulde
 
 Status:
 
- * [![Build Status](https://travis-ci.org/davetcoleman/rosparam_shortcuts.svg)](https://travis-ci.org/davetcoleman/rosparam_shortcuts) Travis CI
- * [![Build Status](http://jenkins.ros.org/buildStatus/icon?job=devel-indigo-rosparam_shortcuts)](http://jenkins.ros.org/job/devel-indigo-rosparam_shortcuts/) Devel Job Status
- * [![Build Status](http://jenkins.ros.org/buildStatus/icon?job=ros-indigo-rosparam-shortcuts_binarydeb_trusty_amd64)](http://jenkins.ros.org/job/ros-indigo-rosparam-shortcuts_binarydeb_trusty_amd64/) AMD64 Debian Job Status
+ * [![Build Status](https://travis-ci.org/davetcoleman/rosparam_shortcuts.svg)](https://travis-ci.org/davetcoleman/rosparam_shortcuts) Travis - Continuous Integration
+ * [![Build Status](http://build.ros.org/buildStatus/icon?job=Jsrc_uT__rosparam_shortcuts__ubuntu_trusty__source)](http://build.ros.org/view/Jsrc_uT/job/Jsrc_uT__rosparam_shortcuts__ubuntu_trusty__source/) ROS Buildfarm - Trusty Devel Source Build
+ * [![Build Status](http://build.ros.org/buildStatus/icon?job=Jbin_uT64__rosparam_shortcuts__ubuntu_trusty_amd64__binary)](http://build.ros.org/view/Jbin_uT64/job/Jbin_uT64__rosparam_shortcuts__ubuntu_trusty_amd64__binary/) ROS Buildfarm - AMD64 Trusty Debian Build
 
 ## Install
 
@@ -30,24 +30,79 @@ Status:
 sudo apt-get install ros-indigo-rosparam-shortcuts
 ```
 
+### Build from Source
+
+To build this package, ``git clone`` this repo into a [catkin workspace](http://wiki.ros.org/catkin/Tutorials/create_a_workspace) and be sure to install necessary dependencies by running the following command in the root of your catkin workspace:
+
+    rosdep install -y --from-paths src --ignore-src --rosdistro indigo
+
 ## Code API
 
 See [Class Reference](http://docs.ros.org/indigo/api/rosparams_shortcuts/html/)
 
-## Example Usage / Demo
+## Usage / Demo
 
-See the file ``src/rosparam_shortcuts_example.cpp`` for example code. To run:
+See the file ``src/example.cpp`` for example code. To run:
 
     roslaunch rosparam_shortcuts example.launch
 
 Your yaml file would look something like the file ``config/example.yaml``:
 
-    example:
-	  control_rate: 100.0
-	  param1: 20
-	  param2: 30
-	  param3: 1
-	  param4: [1, 1, 1, 3.14, 0, 0] # x, y, z, roll, pitch, yaw
+```
+example:
+  control_rate: 100.0 # double
+  param1: 20 # int
+  param2: 30 # size_t
+  param3: 1 # ros::Duration
+  param4: [1, 1, 1, 3.14, 0, 0] # Eigen::Affine3d - x, y, z, roll, pitch, yaw
+  param5: [1.1, 2.2, 3.3, 4.4] # std::vector<double>
+```
+
+### Include Note
+
+Possible dependency issues - I'm not sure if this is always in issue or if there is an easy fix, but when
+including this package in another package you might need to add dependencies on Eigen throught that new package.
+This requires:
+
+package.xml:
+
+```
+<build_depend>eigen</build_depend>
+<run_depend>eigen</run_depend>
+```
+
+CMakeLists.txt:
+
+```
+find_package(catkin REQUIRED COMPONENTS
+  cmake_modules
+  ...
+)
+find_package(Eigen REQUIRED)
+catkin_package(
+  DEPENDS
+    Eigen
+)
+include_directories(
+  ${EIGEN_INCLUDE_DIRS}
+)
+```
+
+If you have a fix for this, let me know!
+
+## Testing and Linting
+
+To run [roslint](http://wiki.ros.org/roslint), use the following command with [catkin-tools](https://catkin-tools.readthedocs.org/):
+
+    catkin build --no-status --no-deps --this --make-args roslint
+
+To run [catkin lint](https://pypi.python.org/pypi/catkin_lint), use the following command with [catkin-tools](https://catkin-tools.readthedocs.org/):
+
+    catkin lint -W2
+
+There are currently no unit or integration tests for this package. If there were you would use the following command with [catkin-tools](https://catkin-tools.readthedocs.org/):
+
+    catkin run_tests --no-deps --this -i
 
 ## Contribute
 
