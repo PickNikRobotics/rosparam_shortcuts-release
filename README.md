@@ -1,3 +1,26 @@
+## rosparam_shortcuts (kinetic) - 0.2.1-0
+
+The packages in the `rosparam_shortcuts` repository were released into the `kinetic` distro by running `/usr/bin/bloom-release rosparam_shortcuts -t kinetic -r kinetic` on `Wed, 28 Sep 2016 13:52:08 -0000`
+
+The `rosparam_shortcuts` package was released.
+
+Version of package(s) in repository `rosparam_shortcuts`:
+
+- upstream repository: https://github.com/davetcoleman/rosparam_shortcuts.git
+- release repository: https://github.com/davetcoleman/rosparam_shortcuts-release.git
+- rosdistro version: `0.2.0-0`
+- old version: `0.2.0-0`
+- new version: `0.2.1-0`
+
+Versions of tools used:
+
+- bloom version: `0.5.22`
+- catkin_pkg version: `0.2.10`
+- rosdep version: `0.11.5`
+- rosdistro version: `0.4.7`
+- vcstools version: `0.1.39`
+
+
 ## rosparam_shortcuts (kinetic) - 0.2.0-0
 
 The packages in the `rosparam_shortcuts` repository were released into the `kinetic` distro by running `/usr/bin/bloom-release rosparam_shortcuts -t kinetic -r kinetic` on `Wed, 29 Jun 2016 12:49:33 -0000`
