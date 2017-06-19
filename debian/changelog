@@ -1,0 +1,87 @@
+ros-lunar-rosparam-shortcuts (0.2.1-0xenial) xenial; urgency=high
+
+  * Fix Eigen3 include
+  * Fix C++11 compiling method
+  * Update Travis for Kinetic
+  * Updated README
+  * Contributors: Dave Coleman
+
+ -- Dave Coleman <davetcoleman@gmail.com>  Tue, 27 Sep 2016 21:00:00 -0000
+
+ros-lunar-rosparam-shortcuts (0.2.0-0xenial) xenial; urgency=high
+
+  * Upgrade to Eigen3 per ROS Kinetic requirements
+  * Converted to C++11 for ROS Kinetic
+  * Removed deprecated functions
+  * Improve documentation
+  * fix typo
+  * Added loading a vector to example
+  * Contributors: Dave Coleman, Sammy Pfeiffer
+
+ -- Dave Coleman <davetcoleman@gmail.com>  Tue, 28 Jun 2016 21:00:00 -0000
+
+ros-lunar-rosparam-shortcuts (0.1.1-0xenial) xenial; urgency=high
+
+  * Fixed CMake build
+  * Ran roslint
+  * Ran catkin lint
+  * Updated example
+  * Contributors: Dave Coleman
+
+ -- Dave Coleman <davetcoleman@gmail.com>  Thu, 17 Dec 2015 21:00:00 -0000
+
+ros-lunar-rosparam-shortcuts (0.1.0-0xenial) xenial; urgency=high
+
+  * Deprecated long named functions in favor of short named functions
+  * Removed redundant unsigned int function
+  * Contributors: Dave Coleman
+
+ -- Dave Coleman <davetcoleman@gmail.com>  Wed, 16 Dec 2015 21:00:00 -0000
+
+ros-lunar-rosparam-shortcuts (0.0.7-0xenial) xenial; urgency=high
+
+  * Added shortcut version of functions
+  * Fix install
+  * Contributors: Dave Coleman
+
+ -- Dave Coleman <davetcoleman@gmail.com>  Sat, 12 Dec 2015 21:00:00 -0000
+
+ros-lunar-rosparam-shortcuts (0.0.6-0xenial) xenial; urgency=high
+
+  * Added example code
+  * Contributors: Dave Coleman
+
+ -- Dave Coleman <davetcoleman@gmail.com>  Wed, 09 Dec 2015 21:00:00 -0000
+
+ros-lunar-rosparam-shortcuts (0.0.5-0xenial) xenial; urgency=high
+
+  * Attempting to fix Eigen
+  * Fix missing dependency
+  * Contributors: Dave Coleman
+
+ -- Dave Coleman <davetcoleman@gmail.com>  Tue, 08 Dec 2015 21:00:00 -0000
+
+ros-lunar-rosparam-shortcuts (0.0.4-0xenial) xenial; urgency=high
+
+  * Attempt to fix Eigen include dir
+  * Contributors: Dave Coleman
+
+ -- Dave Coleman <davetcoleman@gmail.com>  Sun, 06 Dec 2015 21:00:00 -0000
+
+ros-lunar-rosparam-shortcuts (0.0.3-0xenial) xenial; urgency=high
+
+  * Added travis support
+  * catkin lint cleanup
+  * Switched travis to jade branch
+  * Contributors: Dave Coleman
+
+ -- Dave Coleman <davetcoleman@gmail.com>  Fri, 04 Dec 2015 21:00:00 -0000
+
+ros-lunar-rosparam-shortcuts (0.0.2-0xenial) xenial; urgency=high
+
+  * Initial release
+  * Contributors: Dave Coleman
+
+ -- Dave Coleman <davetcoleman@gmail.com>  Wed, 02 Dec 2015 21:00:00 -0000
+
+
