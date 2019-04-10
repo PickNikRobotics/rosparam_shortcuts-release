@@ -1,3 +1,26 @@
+## rosparam_shortcuts (melodic) - 0.3.0-0
+
+The packages in the `rosparam_shortcuts` repository were released into the `melodic` distro by running `/usr/bin/bloom-release rosparam_shortcuts -t melodic -r melodic` on `Wed, 10 Apr 2019 19:20:01 -0000`
+
+The `rosparam_shortcuts` package was released.
+
+Version of package(s) in repository `rosparam_shortcuts`:
+
+- upstream repository: https://github.com/PickNikRobotics/rosparam_shortcuts.git
+- release repository: https://github.com/PickNikRobotics/rosparam_shortcuts-release.git
+- rosdistro version: `0.2.1-0`
+- old version: `0.2.1-0`
+- new version: `0.3.0-0`
+
+Versions of tools used:
+
+- bloom version: `0.7.2`
+- catkin_pkg version: `0.4.11`
+- rosdep version: `0.15.1`
+- rosdistro version: `0.7.3`
+- vcstools version: `0.1.40`
+
+
 ## rosparam_shortcuts (melodic) - 0.2.1-0
 
 The packages in the `rosparam_shortcuts` repository were released into the `melodic` distro by running `/usr/bin/bloom-release rosparam_shortcuts -t melodic -r melodic` on `Thu, 31 May 2018 20:05:47 -0000`
