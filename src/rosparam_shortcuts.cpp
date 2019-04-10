@@ -208,7 +208,7 @@ bool get(const std::string &parent_name, const ros::NodeHandle &nh, const std::s
 }
 
 bool get(const std::string &parent_name, const ros::NodeHandle &nh, const std::string &param_name,
-         Eigen::Affine3d &value)
+         Eigen::Isometry3d &value)
 {
   std::vector<double> values;
 
@@ -227,7 +227,7 @@ bool get(const std::string &parent_name, const ros::NodeHandle &nh, const std::s
   ROS_DEBUG_STREAM_NAMED(parent_name, "Loaded parameter '" << nh.getNamespace() << "/" << param_name
                                                            << "' with values [" << getDebugArrayString(values) << "]");
 
-  // Convert to Eigen::Affine3d
+  // Convert to Eigen::Isometry3d
   convertDoublesToEigen(parent_name, values, value);
 
   return true;
@@ -253,23 +253,32 @@ std::string getDebugArrayString(std::vector<std::string> values)
   return debug_values.str();
 }
 
-bool convertDoublesToEigen(const std::string &parent_name, std::vector<double> values, Eigen::Affine3d &transform)
+bool convertDoublesToEigen(const std::string &parent_name, std::vector<double> values, Eigen::Isometry3d &transform)
 {
-  if (values.size() != 6)
+  if (values.size() == 6)
+  {
+    // This version is correct RPY
+    Eigen::AngleAxisd roll_angle(values[3], Eigen::Vector3d::UnitX());
+    Eigen::AngleAxisd pitch_angle(values[4], Eigen::Vector3d::UnitY());
+    Eigen::AngleAxisd yaw_angle(values[5], Eigen::Vector3d::UnitZ());
+    Eigen::Quaternion<double> quaternion = roll_angle * pitch_angle * yaw_angle;
+
+    transform = Eigen::Translation3d(values[0], values[1], values[2]) * quaternion;
+
+    return true;
+  }
+  else if (values.size() == 7)
+  {
+    // Quaternion
+    transform = Eigen::Translation3d(values[0], values[1], values[2]) * 
+                Eigen::Quaterniond(values[3], values[4], values[5], values[6]);
+    return true;
+  }
+  else
   {
     ROS_ERROR_STREAM_NAMED(parent_name, "Invalid number of doubles provided for transform, size=" << values.size());
     return false;
   }
-
-  // This version is correct RPY
-  Eigen::AngleAxisd roll_angle(values[3], Eigen::Vector3d::UnitX());
-  Eigen::AngleAxisd pitch_angle(values[4], Eigen::Vector3d::UnitY());
-  Eigen::AngleAxisd yaw_angle(values[5], Eigen::Vector3d::UnitZ());
-  Eigen::Quaternion<double> quaternion = roll_angle * pitch_angle * yaw_angle;
-
-  transform = Eigen::Translation3d(values[0], values[1], values[2]) * quaternion;
-
-  return true;
 }
 
 void shutdownIfError(const std::string &parent_name, std::size_t error_count)
