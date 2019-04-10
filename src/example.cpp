@@ -61,8 +61,9 @@ int main(int argc, char** argv)
   int param1;
   std::size_t param2;
   ros::Duration param3;
-  Eigen::Affine3d param4;
+  Eigen::Isometry3d param4;
   std::vector<double> param5;
+  Eigen::Isometry3d param6;
 
   // Load rosparams
   ros::NodeHandle rpnh(nh, name);
@@ -71,8 +72,9 @@ int main(int argc, char** argv)
   error += !rosparam_shortcuts::get(name, rpnh, "param1", param1);              // Int param
   error += !rosparam_shortcuts::get(name, rpnh, "param2", param2);              // SizeT param
   error += !rosparam_shortcuts::get(name, rpnh, "param3", param3);              // Duration param
-  error += !rosparam_shortcuts::get(name, rpnh, "param4", param4);              // Affine3d param
+  error += !rosparam_shortcuts::get(name, rpnh, "param4", param4);              // Isometry3d param
   error += !rosparam_shortcuts::get(name, rpnh, "param5", param5);              // std::vector<double>
+  error += !rosparam_shortcuts::get(name, rpnh, "param6", param6);              // Isometry3d param
   // add more parameters here to load if desired
   rosparam_shortcuts::shutdownIfError(name, error);
 
@@ -84,6 +86,7 @@ int main(int argc, char** argv)
   ROS_INFO_STREAM_NAMED(name, "param4: Translation:\n" << param4.translation());
   ROS_INFO_STREAM_NAMED(name, "param5[0]: " << param5[0]);
   ROS_INFO_STREAM_NAMED(name, "param5[3]: " << param5[3]);
+  ROS_INFO_STREAM_NAMED(name, "param6: Translation:\n" << param6.translation());
   ROS_INFO_STREAM_NAMED(name, "Shutting down.");
   ros::shutdown();
 
