@@ -1,0 +1,120 @@
+ros-melodic-rosparam-shortcuts (0.3.2-1bionic) bionic; urgency=high
+
+  * Update to new ros_buildfarm workspace directory
+  * Add get() for geometry_msgs::Pose
+  * Contributors: Henning Kayser
+
+ -- Dave Coleman <davetcoleman@gmail.com>  Tue, 17 Sep 2019 21:00:00 -0000
+
+ros-melodic-rosparam-shortcuts (0.3.1-1bionic) bionic; urgency=high
+
+  * removing deprecated functions because catkin can't tell the difference between affine3d and isometry3d (#9 <https://github.com/picknikrobotics/rosparam_shortcuts/issues/9>)
+  * Travis badge fixup (#8 <https://github.com/picknikrobotics/rosparam_shortcuts/issues/8>)
+    * fixing travis and build tags
+    * updating install instructions
+    * adding melodic ci
+  * Contributors: Mike Lautman
+
+ -- Dave Coleman <davetcoleman@gmail.com>  Thu, 11 Apr 2019 21:00:00 -0000
+
+ros-melodic-rosparam-shortcuts (0.3.0-1bionic) bionic; urgency=high
+
+  * Deprecate Affine3d transforms and support Isometry3d (#7 <https://github.com/picknikrobotics/rosparam_shortcuts/issues/7>)
+  * Merge pull request #4 <https://github.com/picknikrobotics/rosparam_shortcuts/issues/4> from PickNikRobotics/kinetic-devel-eigen-additions
+    adding support for loading trajectories and loading quaternions
+  * removing EigenSTL
+  * adding support for loading trajectories and loading quaternions
+  * Merge pull request #3 <https://github.com/picknikrobotics/rosparam_shortcuts/issues/3> from gavanderhoorn/patch-1
+    Fix minor typo in API doc link.
+  * Fix minor typo in API doc link.
+  * Contributors: Dave Coleman, G.A. vd. Hoorn, Henning Kayser, mike
+
+ -- Dave Coleman <davetcoleman@gmail.com>  Tue, 09 Apr 2019 21:00:00 -0000
+
+ros-melodic-rosparam-shortcuts (0.2.1-1bionic) bionic; urgency=high
+
+  * Fix Eigen3 include
+  * Fix C++11 compiling method
+  * Update Travis for Kinetic
+  * Updated README
+  * Contributors: Dave Coleman
+
+ -- Dave Coleman <davetcoleman@gmail.com>  Tue, 27 Sep 2016 21:00:00 -0000
+
+ros-melodic-rosparam-shortcuts (0.2.0-1bionic) bionic; urgency=high
+
+  * Upgrade to Eigen3 per ROS Kinetic requirements
+  * Converted to C++11 for ROS Kinetic
+  * Removed deprecated functions
+  * Improve documentation
+  * fix typo
+  * Added loading a vector to example
+  * Contributors: Dave Coleman, Sammy Pfeiffer
+
+ -- Dave Coleman <davetcoleman@gmail.com>  Tue, 28 Jun 2016 21:00:00 -0000
+
+ros-melodic-rosparam-shortcuts (0.1.1-1bionic) bionic; urgency=high
+
+  * Fixed CMake build
+  * Ran roslint
+  * Ran catkin lint
+  * Updated example
+  * Contributors: Dave Coleman
+
+ -- Dave Coleman <davetcoleman@gmail.com>  Thu, 17 Dec 2015 22:00:00 -0000
+
+ros-melodic-rosparam-shortcuts (0.1.0-1bionic) bionic; urgency=high
+
+  * Deprecated long named functions in favor of short named functions
+  * Removed redundant unsigned int function
+  * Contributors: Dave Coleman
+
+ -- Dave Coleman <davetcoleman@gmail.com>  Wed, 16 Dec 2015 22:00:00 -0000
+
+ros-melodic-rosparam-shortcuts (0.0.7-1bionic) bionic; urgency=high
+
+  * Added shortcut version of functions
+  * Fix install
+  * Contributors: Dave Coleman
+
+ -- Dave Coleman <davetcoleman@gmail.com>  Sat, 12 Dec 2015 22:00:00 -0000
+
+ros-melodic-rosparam-shortcuts (0.0.6-1bionic) bionic; urgency=high
+
+  * Added example code
+  * Contributors: Dave Coleman
+
+ -- Dave Coleman <davetcoleman@gmail.com>  Wed, 09 Dec 2015 22:00:00 -0000
+
+ros-melodic-rosparam-shortcuts (0.0.5-1bionic) bionic; urgency=high
+
+  * Attempting to fix Eigen
+  * Fix missing dependency
+  * Contributors: Dave Coleman
+
+ -- Dave Coleman <davetcoleman@gmail.com>  Tue, 08 Dec 2015 22:00:00 -0000
+
+ros-melodic-rosparam-shortcuts (0.0.4-1bionic) bionic; urgency=high
+
+  * Attempt to fix Eigen include dir
+  * Contributors: Dave Coleman
+
+ -- Dave Coleman <davetcoleman@gmail.com>  Sun, 06 Dec 2015 22:00:00 -0000
+
+ros-melodic-rosparam-shortcuts (0.0.3-1bionic) bionic; urgency=high
+
+  * Added travis support
+  * catkin lint cleanup
+  * Switched travis to jade branch
+  * Contributors: Dave Coleman
+
+ -- Dave Coleman <davetcoleman@gmail.com>  Fri, 04 Dec 2015 22:00:00 -0000
+
+ros-melodic-rosparam-shortcuts (0.0.2-1bionic) bionic; urgency=high
+
+  * Initial release
+  * Contributors: Dave Coleman
+
+ -- Dave Coleman <davetcoleman@gmail.com>  Wed, 02 Dec 2015 22:00:00 -0000
+
+
