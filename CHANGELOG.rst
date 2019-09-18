@@ -2,6 +2,12 @@
 Changelog for package rosparam_shortcuts
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+0.3.2 (2019-09-18)
+------------------
+* Update to new ros_buildfarm workspace directory
+* Add get() for geometry_msgs::Pose
+* Contributors: Henning Kayser
+
 0.3.1 (2019-04-12)
 ------------------
 * removing deprecated functions because catkin can't tell the difference between affine3d and isometry3d (`#9 <https://github.com/picknikrobotics/rosparam_shortcuts/issues/9>`_)
