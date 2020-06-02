@@ -1,0 +1,12 @@
+Source: ros-noetic-rosparam-shortcuts
+Section: misc
+Priority: optional
+Maintainer: Dave Coleman <davetcoleman@gmail.com>
+Build-Depends: debhelper (>= 9.0.0), libeigen3-dev, ros-noetic-catkin, ros-noetic-cmake-modules, ros-noetic-eigen-conversions, ros-noetic-roscpp, ros-noetic-roslint
+Homepage: https://github.com/davetcoleman/rosparam_shortcuts
+Standards-Version: 3.9.2
+
+Package: ros-noetic-rosparam-shortcuts
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}, ros-noetic-eigen-conversions, ros-noetic-roscpp
+Description: Quickly load variables from rosparam with good command line error checking.
