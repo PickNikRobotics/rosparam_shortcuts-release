@@ -1,7 +1,6 @@
-<?xml version="1.0"?>
-<package>
+<package format="3">
   <name>rosparam_shortcuts</name>
-  <version>0.4.0</version>
+  <version>0.5.0</version>
   <description>Quickly load variables from rosparam with good command line error checking.</description>
 
   <maintainer email="davetcoleman@gmail.com">Dave Coleman</maintainer>
@@ -9,22 +8,28 @@
   <license>BSD</license>
 
   <url type="website">https://github.com/davetcoleman/rosparam_shortcuts</url>
-  <url type="butracker">https://github.com/davetcoleman/rosparam_shortcuts/issues</url>
+  <url type="bugtracker">https://github.com/davetcoleman/rosparam_shortcuts/issues</url>
   <url type="repository">https://github.com/davetcoleman/rosparam_shortcuts/</url>
 
   <author email="davetcoleman@gmail.com">Dave Coleman</author>
 
-  <buildtool_depend>catkin</buildtool_depend>
-
-  <build_depend>roscpp</build_depend>
-  <build_depend>cmake_modules</build_depend>
+  <buildtool_depend>ament_cmake</buildtool_depend>
+  <buildtool_depend>eigen3_cmake_module</buildtool_depend>
   <build_depend>eigen</build_depend>
-  <build_depend>eigen_conversions</build_depend>
-  <build_depend>roslint</build_depend>
 
-  <run_depend>roscpp</run_depend>
-  <run_depend>eigen_conversions</run_depend>
+  <buildtool_export_depend>eigen3_cmake_module</buildtool_export_depend>
+  <build_export_depend>eigen</build_export_depend>
+
+  <depend>geometry_msgs</depend>
+  <depend>rclcpp</depend>
+  <depend>tf2_eigen</depend>
+
+  <test_depend>ament_cmake_gtest</test_depend>
+  <test_depend>ament_lint_auto</test_depend>
+  <test_depend>ament_lint_common</test_depend>
+  <test_depend>ros_testing</test_depend>
 
   <export>
+    <build_type>ament_cmake</build_type>
   </export>
 </package>

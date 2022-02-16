@@ -2,12 +2,19 @@
 Changelog for package rosparam_shortcuts
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-0.4.0 (2020-06-02)
+0.5.0 (2022-02-16)
 ------------------
+* Fix warnings (`#25 <https://github.com/PickNikRobotics/rosparam_shortcuts/issues/25>`_)
+* Galactic and rolling fixes (`#23 <https://github.com/PickNikRobotics/rosparam_shortcuts/issues/23>`_)
+* Dynamic parameters (`#16 <https://github.com/PickNikRobotics/rosparam_shortcuts/issues/16>`_)
+  Allows a node to contain an object capable of handling dynamic parameters.
+  Contains methods for user defined parameter validation callbacks and
+  notifies the user if the parameters changed.
+* Port rosparam_shortcuts to ROS 2 (`#15 <https://github.com/PickNikRobotics/rosparam_shortcuts/issues/15>`_)
 * bump cmake version (`#13 <https://github.com/PickNikRobotics/rosparam_shortcuts/issues/13>`_)
   get rid of CMP0048 warning.
   https://github.com/ros-planning/geometric_shapes/pull/129
-* Contributors: Michael Görner
+* Contributors: Boston Cleek, Jafar Abdi, Michael Görner, Nathan Brooks
 
 0.3.3 (2019-09-24)
 ------------------

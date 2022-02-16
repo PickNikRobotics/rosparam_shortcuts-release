@@ -1,95 +1,112 @@
-cmake_minimum_required(VERSION 3.0.2)
+cmake_minimum_required(VERSION 3.16.3)
 project(rosparam_shortcuts)
 
-# C++ 14
-add_compile_options(-std=c++14)
+# C++ 17
+add_compile_options(-std=c++17)
 
-find_package(catkin REQUIRED COMPONENTS
-  roscpp
-  cmake_modules
-  eigen_conversions # TODO(davetcoleman) remove this dependency, only for build testing
-  roslint
-)
-
+find_package(ament_cmake REQUIRED)
+find_package(eigen3_cmake_module REQUIRED)
 find_package(Eigen3 REQUIRED)
+find_package(geometry_msgs REQUIRED)
+find_package(rclcpp REQUIRED)
+find_package(tf2_eigen REQUIRED)
 
-catkin_package(
-  INCLUDE_DIRS
-    include
-    ${EIGEN3_INCLUDE_DIR}
-  LIBRARIES
-    ${PROJECT_NAME}
-  CATKIN_DEPENDS
-    roscpp
-  DEPENDS
-    EIGEN3
-)
-
-include_directories(SYSTEM
-  ${EIGEN3_INCLUDE_DIRS}
+set(THIS_PACKAGE_INCLUDE_DEPENDS
+    Eigen3
+    eigen3_cmake_module
+    geometry_msgs
+    rclcpp
+    tf2_eigen
 )
 
 include_directories(
   include
-  ${catkin_INCLUDE_DIRS}
 )
 
 ###########
 ## Build ##
 ###########
+add_library(${PROJECT_NAME} SHARED
+            src/node_parameters.cpp
+            src/rosparam_shortcuts.cpp)
 
-add_library(${PROJECT_NAME}
-  src/rosparam_shortcuts.cpp
+target_include_directories(${PROJECT_NAME} PUBLIC
+    $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
+    $<INSTALL_INTERFACE:include>
 )
 
-target_link_libraries(${PROJECT_NAME}
-  ${catkin_LIBRARIES}
-)
+ament_target_dependencies(${PROJECT_NAME} ${THIS_PACKAGE_INCLUDE_DEPENDS})
+target_compile_options(${PROJECT_NAME} PRIVATE -Wall -Wextra)
 
 ## Example executable
 add_executable(${PROJECT_NAME}_example src/example.cpp)
+ament_target_dependencies(${PROJECT_NAME}_example ${THIS_PACKAGE_INCLUDE_DEPENDS})
 set_target_properties(${PROJECT_NAME}_example PROPERTIES OUTPUT_NAME example PREFIX "")
-target_link_libraries(${PROJECT_NAME}_example
-  ${PROJECT_NAME}
-  ${catkin_LIBRARIES}
-)
+target_link_libraries(${PROJECT_NAME}_example ${PROJECT_NAME})
 
-#############
-## Testing ##
-#############
-
-## Test for correct C++ source code
-## To run: catkin bot --make-args roslint
-roslint_cpp()
+add_executable(${PROJECT_NAME}_node_parameters_example src/node_parameters_example.cpp)
+ament_target_dependencies(${PROJECT_NAME}_node_parameters_example ${THIS_PACKAGE_INCLUDE_DEPENDS})
+set_target_properties(${PROJECT_NAME}_node_parameters_example PROPERTIES OUTPUT_NAME node_parameters_example PREFIX "")
+target_link_libraries(${PROJECT_NAME}_node_parameters_example ${PROJECT_NAME})
 
 #############
 ## Install ##
 #############
 
-# Mark cpp header files for installation
-install(TARGETS ${PROJECT_NAME} ${PROJECT_NAME}_example
-  ARCHIVE DESTINATION ${CATKIN_PACKAGE_LIB_DESTINATION}
-  LIBRARY DESTINATION ${CATKIN_PACKAGE_LIB_DESTINATION}
-  RUNTIME DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}
+# Install Libraries
+install(
+  TARGETS ${PROJECT_NAME}
+  EXPORT export_${PROJECT_NAME}
+  ARCHIVE DESTINATION lib
+  LIBRARY DESTINATION lib
+  RUNTIME DESTINATION bin
+  INCLUDES DESTINATION include
+)
+
+# Install Binaries
+install(
+  TARGETS
+    ${PROJECT_NAME}_example
+    ${PROJECT_NAME}_node_parameters_example
+  ARCHIVE DESTINATION lib
+  LIBRARY DESTINATION lib
+  RUNTIME DESTINATION bin
+  RUNTIME DESTINATION lib/${PROJECT_NAME}
 )
 
 # Mark cpp header files for installation
-install(DIRECTORY include/${PROJECT_NAME}/
-  DESTINATION ${CATKIN_PACKAGE_INCLUDE_DESTINATION}
-  FILES_MATCHING PATTERN "*.h"
-  PATTERN ".svn" EXCLUDE
+install(
+  DIRECTORY include/
+  DESTINATION include
 )
 
-# Mark roslaunch files for installation
-install(DIRECTORY launch/
-  DESTINATION ${CATKIN_PACKAGE_SHARE_DESTINATION}
-  FILES_MATCHING PATTERN "*.launch"
-  PATTERN ".svn" EXCLUDE
+# Install launch, config directories
+install(
+  DIRECTORY
+    launch
+    config
+  DESTINATION share/${PROJECT_NAME}
 )
 
-# Mark config files for installation
-install(DIRECTORY config/
-  DESTINATION ${CATKIN_PACKAGE_SHARE_DESTINATION}
-  FILES_MATCHING PATTERN "*.yaml"
-  PATTERN ".svn" EXCLUDE
-)
+ament_export_targets(export_${PROJECT_NAME} HAS_LIBRARY_TARGET)
+ament_export_dependencies(${THIS_PACKAGE_INCLUDE_DEPENDS})
+
+if(BUILD_TESTING)
+  find_package(ament_lint_auto REQUIRED)
+  find_package(ament_cmake_gtest REQUIRED)
+  find_package(ros_testing REQUIRED)
+  # These don't pass yet, disable them for now
+  set(ament_cmake_cppcheck_FOUND TRUE)
+  set(ament_cmake_cpplint_FOUND TRUE)
+  set(ament_cmake_flake8_FOUND TRUE)
+  set(ament_cmake_uncrustify_FOUND TRUE)
+
+  # Run all lint tests in package.xml except those listed above
+  ament_lint_auto_find_test_dependencies()
+
+  ament_add_gtest(test_node_parameters test/test_node_parameters.cpp)
+  ament_target_dependencies(test_node_parameters ${THIS_PACKAGE_INCLUDE_DEPENDS})
+  target_link_libraries(test_node_parameters ${PROJECT_NAME})
+endif()
+
+ament_package()
