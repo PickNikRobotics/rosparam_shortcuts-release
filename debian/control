@@ -1,0 +1,12 @@
+Source: ros-rolling-rosparam-shortcuts
+Section: misc
+Priority: optional
+Maintainer: Dave Coleman <davetcoleman@gmail.com>
+Build-Depends: debhelper (>= 9.0.0), libeigen3-dev, ros-rolling-ament-cmake, ros-rolling-ament-cmake-gtest, ros-rolling-ament-lint-auto, ros-rolling-ament-lint-common, ros-rolling-eigen3-cmake-module, ros-rolling-geometry-msgs, ros-rolling-rclcpp, ros-rolling-ros-testing, ros-rolling-tf2-eigen, ros-rolling-ros-workspace
+Homepage: https://github.com/davetcoleman/rosparam_shortcuts
+Standards-Version: 3.9.2
+
+Package: ros-rolling-rosparam-shortcuts
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}, libeigen3-dev, ros-rolling-eigen3-cmake-module, ros-rolling-geometry-msgs, ros-rolling-rclcpp, ros-rolling-tf2-eigen, ros-rolling-ros-workspace
+Description: Quickly load variables from rosparam with good command line error checking.
