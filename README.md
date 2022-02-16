@@ -1,3 +1,26 @@
+## rosparam_shortcuts (rolling) - 0.5.0-1
+
+The packages in the `rosparam_shortcuts` repository were released into the `rolling` distro by running `/home/jafar/workspaces/moveit_studio_buildfarm/buildbot-env/bin/bloom-release rosparam_shortcuts -t rolling -r rolling` on `Wed, 16 Feb 2022 18:50:27 -0000`
+
+The `rosparam_shortcuts` package was released.
+
+Version of package(s) in repository `rosparam_shortcuts`:
+
+- upstream repository: https://github.com/PickNikRobotics/rosparam_shortcuts.git
+- release repository: unknown
+- rosdistro version: `null`
+- old version: `null`
+- new version: `0.5.0-1`
+
+Versions of tools used:
+
+- bloom version: `0.10.7`
+- catkin_pkg version: `0.4.24`
+- rosdep version: `0.21.0`
+- rosdistro version: `0.8.3`
+- vcstools version: `0.1.42`
+
+
 ## rosparam_shortcuts (noetic) - 0.4.0-1
 
 The packages in the `rosparam_shortcuts` repository were released into the `noetic` distro by running `/usr/bin/bloom-release rosparam_shortcuts -t noetic -r noetic --edit` on `Tue, 02 Jun 2020 19:06:59 -0000`
